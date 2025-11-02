@@ -31,7 +31,7 @@ required-features = ["self-signed"]
 [dependencies]
 bytes = "1.4.0"
 pem = "3.0.4"
-quinn = { version = "0.11.6", default-features = false, features = ["runtime-tokio"] }
+quinn = { git = "https://github.com/moqtail/quinn.git", branch="expose-bbr-bandwidth", default-features = false, features = ["runtime-tokio"] }
 rcgen = { version = "0.14.5", default-features = false, optional = true }
 rustls = { version = "0.23.23", default-features = false }
 rustls-native-certs = "0.8.0"
@@ -61,7 +61,7 @@ aws-lc-rs-fips = ["quinn/aws-lc-rs-fips", "quinn/rustls-aws-lc-rs-fips", "rustls
 dangerous-configuration = []
 fips = ["aws-lc-rs-fips"]
 quinn = []
-quinn-log = ["quinn/log"]
+quinn-log = ["quinn/qlog"]
 ring = ["quinn/ring", "quinn/rustls", "rustls/ring", "rcgen?/ring"]
 self-signed = ["dep:rcgen"]
 

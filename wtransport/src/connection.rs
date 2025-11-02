@@ -359,6 +359,12 @@ impl Connection {
         self.quic_connection.rtt()
     }
 
+    /// Current best estimate of this connection's bandwidth in bits per second.
+    #[inline(always)]
+    pub fn bandwidth(&self) -> Option<u64> {
+        self.quic_connection.stats().path.bandwidth
+    } 
+
     /// Derive keying material from this connection's TLS session secrets.
     ///
     /// When both peers call this method with the same `label` and `context`
