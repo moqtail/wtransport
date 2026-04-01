@@ -365,6 +365,18 @@ impl Connection {
         self.quic_connection.stats().path.bandwidth
     } 
 
+    /// Current estimated round trip time (RTT)
+    #[inline(always)]
+    pub fn stats_rtt(&self) -> Duration {
+        self.quic_connection.stats().path.rtt
+    }
+
+    /// Current congestion window size in bytes
+    #[inline(always)]
+    pub fn cwnd(&self) -> u64 {
+        self.quic_connection.stats().path.cwnd
+    }
+
     /// Derive keying material from this connection's TLS session secrets.
     ///
     /// When both peers call this method with the same `label` and `context`
